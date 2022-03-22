@@ -1,40 +1,19 @@
-import axios, { Axios, AxiosError, AxiosInstance, AxiosResponse } from "axios";
-import { IException } from "../utils/exceptions";
+import axios, { AxiosResponse } from "axios";
+
 import settings from '../../appConfig.json'
-import { store, useStore } from "../stores/Store";
-
-interface IResponse<TData> {
-    data: TData;
-    isSuccessful: boolean;
-    errors: IException[]
-}
+import { store } from "../stores/Store";
 
 
 
-axios.interceptors.response.use((res:AxiosResponse<IResponse<any>>)=>{
-  if(res.data.isSuccessful){
-    return res
-  }
-},(error:AxiosError)=>{
-//Handle server errors here
-  const {status} = error.response!
-  switch (status) {
-    case 404:
-       
-      break;
-  
-    default:
-      break;
-  }
-});
+
+
 
 axios.defaults.baseURL = settings.serverUrl;
-const responseBody = <T>(response: AxiosResponse<IResponse<T>>) => response.data;
+const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 
 axios.interceptors.request.use(config => {
-  const token = store.AuthenticationStore.token;
-
+  const token = store.AuthenticationStore.user.token;
     if(config.headers)
             config.headers.Authorization = `Bearer ${token}`
   return config;
@@ -43,11 +22,25 @@ axios.interceptors.request.use(config => {
 
 
 export const requests = {
-  get:<T>(url: string) => axios.get<IResponse<T>>(url).then(responseBody),
-  post: <T>(url: string, body:any) =>axios.post<IResponse<T>>(url, body).then(responseBody),
-  put: <T>(url: string, body:any) =>axios.put<IResponse<T>>(url, body).then(responseBody),
-  del: <T>(url: string) => axios.delete<IResponse<T>>(url).then(responseBody)
+  get:<T>(url: string,query?:string) => axios.get<T>(url,{
+    params:query
+  }).then(responseBody),
+  post: <T>(url: string, body:any) =>axios.post<T>(url, body).then(responseBody),
+  put: <T>(url: string, body:any) =>axios.put<T>(url, body).then(responseBody),
+  del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
+  patch:<T>(url:string,body:any)=>axios.patch<T>(url,body).then(responseBody),
+  Download: <T>(urlFile: string) => {
+    axios.get<Blob>(urlFile).then(responseBody)
+  },
+  //@ts-ignore
+  download:(url:string,fileName:string)=>axios.get<Blob>(url,{responseType:'blob'}).then((response) => {
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download',fileName);
+    document.body.appendChild(link);
+    link.click();
+  })
+
 }
-
-
 

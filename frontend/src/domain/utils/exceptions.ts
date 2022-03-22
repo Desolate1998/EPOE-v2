@@ -1,8 +1,5 @@
-export enum ExceptionType{
-    NotFound =0,
-    NotAllowed=1,
-    InputNotValid=2
-}
+import { ExceptionType } from "../enums/ExceptionType";
+
 
 export interface IException{
     type: ExceptionType;

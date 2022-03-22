@@ -1,0 +1,17 @@
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\Persistent.deps.json
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\Persistent.runtimeconfig.json
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\Persistent.dll
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\Persistent.pdb
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\Domain.dll
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\Domain.pdb
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.csproj.AssemblyReference.cache
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.AssemblyInfoInputs.cache
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.AssemblyInfo.cs
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.csproj.CoreCompileInputs.cache
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.csproj.CopyComplete
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.dll
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\ref\Persistent.dll
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.pdb
+D:\Repos\EPOE-v2\Persistent\obj\Debug\net6.0\Persistent.genruntimeconfig.cache
+D:\Repos\EPOE-v2\Persistent\bin\Debug\net6.0\ref\Persistent.dll

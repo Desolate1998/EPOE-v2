@@ -12,8 +12,14 @@ namespace Api.Extensions
     {
         public MapperProfilesExtension()
         {
-            CreateMap<LoginRequest, User>();
-
+            CreateMap<UserCreateRequest, User>();
+            CreateMap<RegisterRequest, User>();
+            CreateMap<NqfLevelCreateRequest, NqfLevel>();
+            CreateMap<QualificationCreateRequest, Qualification>();
+            CreateMap<ModuleCreateRequest, Module>();
+            CreateMap<ActivityCreateRequest, Activity>();
+            CreateMap<CampusCreateRequest, Campus>();
+            CreateMap<ProfileDocumentTypeCreateRequest, ProfileDocumentType>();
         }
     }
 }

@@ -9,8 +9,9 @@ namespace Domain.Enums
         [Description("User is not allowed to access this method")]
         NotAllowed,
         [Description("User input data was not valid")]
-        InputNotValid
-        
-        
+        InputNotValid,
+        [Description("There are conflicting results")]
+        Conflicting
+
     }
 }

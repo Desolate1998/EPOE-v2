@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "L2jFtiOxOFCeLAdtS/uD2WCM2VMVcMxMgRjZMHHJpUY=",
+  "Source": "Api",
+  "BasePath": "_content/Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Api\\wwwroot",
+      "Source": "Api",
+      "ContentRoot": "D:\\Repos\\EPOE-v2\\API\\wwwroot\\",
+      "BasePath": "_content/Api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Repos\\EPOE-v2\\API\\wwwroot\\ProfilePictures\\test.png",
+      "SourceId": "Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Repos\\EPOE-v2\\API\\wwwroot\\",
+      "BasePath": "_content/Api",
+      "RelativePath": "ProfilePictures/test.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfilePictures\\test.png"
+    }
+  ]
+}

@@ -1,22 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Api.Extensions;
+using API.Extensions;
+using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System.Linq;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace api
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,13 +28,22 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-    
-            services.AddControllers();
+
+            services
+                .AddControllers()
+                .AddNewtonsoftJson();
+
+            services.AddOData().Services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.UseCamelCasing(false);
+                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
             });
             services.AddScopedExtensions(Configuration);
+            services.AddIdentityServices(Configuration);
 
         }
 
@@ -49,15 +59,18 @@ namespace api
             }
 
             app.UseHttpsRedirection();
-
-            app.UseRouting();
+            app.UseStaticFiles();
+            app.UseRouting(); 
 
             app.UseAuthentication();
-
             app.UseAuthorization();
+
+
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.EnableDependencyInjection();
+                endpoints.Count().Select().Filter().Expand();
                 endpoints.MapControllers();
             });
         }

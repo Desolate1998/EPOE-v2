@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\domain",
+    "\\src\\resources",
+    "\\src\\views"
+  ],
+  "SelectedNode": "\\src\\views\\Dashboard.tsx",
+  "PreviewInSolutionExplorer": false
+}

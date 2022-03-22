@@ -1,4 +1,6 @@
 ﻿using api;
+using API.Services;
+using Application;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +38,16 @@ namespace Api.Extensions
                     opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));
                 }
             );
-
+            services.AddScoped<TokenServices>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<INqfLevelService, NqfLevelService>();
+            services.AddScoped<IQualificationService, QualificationService>();
+            services.AddScoped<IModuleService, ModuleService>();
+            services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<ICampusService, CampusService>();
+            services.AddScoped<IProfileDocumentTypeService, ProfileDocumentTypeService>();
+            services.AddScoped<IProfileDocumentService, ProfileDocumentService>();
+            services.AddScoped<IFileServices, FileServices>();
             services.AddAutoMapper(typeof(Startup));
             return services;
         }
